@@ -179,7 +179,7 @@ Make sure you have Visual Studio installed properly:
 - Under the Workloads tab, click Game development with C++ if it isn’t checked and then click Modify.
 
 1. Download the source code from the [Meta fork of Epic’s Unreal Engine on GitHub](https://github.com/Oculus-VR/UnrealEngine).
-2. Follow Epic’s instructions on [Building Unreal Engine from Source](https://docs.unrealengine.com/5.2/en-US/building-unreal-engine-from-source/) to complete the process.
+2. Follow Epic’s instructions on [Building Unreal Engine from Source](https://dev.epicgames.com/documentation/en-us/unreal-engine/building-unreal-engine-from-source/) to complete the process.
 3. Launch the Unreal Editor
 4. From "Recent Projects", click "Browse" and select `PTSamples.uproject`
 
