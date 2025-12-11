@@ -23,38 +23,6 @@ Here are relevant assets in this scene that you can use and modify to fit your n
 * **BP_OculusLogo.uasset**: A standard actor with lit material.
 * **BP_Grafitti.uasset**: This is the same as BP_OculusLogo.uasset but with a custom material.
 
-## Lighting Effects
-Darkening your space and lightening it in key areas is another common usage of Passthrough. From shining a top-down spotlight on a table game or art piece, to isolating into a "focus mode" by blacking out everything except your immediate area, or shining a volumetric flashlight paired with dynamic lighting, a lot can be achieved with Passthrough even without scene understanding.
-
-In the **PTLighting** level, you can find an example of using Passthrough to create a "focus mode." The general idea behind lighting Passthrough is:
-
-1. Set Passthrough as an Underlay.
-2. Darken the Passthrough using *Color Scale* & *Color Offset*
-
-![Passthrough Layer Component settings](Media/unreal-pt-lighting-layer-settings.png)
-
-3. Create another Passthrough Layer component (UserDefined & Underlay, *Texture Opacity Factor* 0, no styling), it will act as the flashlight light cone
-
-![Secondary Passthrough Layer Component settings](Media/unreal-pt-lighting-secondary-layer-settings.png)
-
-4. Project the new layer onto the light cone using the *Add Surface Geometry* node
-5. Use the *Set Texture Opacity Node* to turn the flashlight on/off
-
-Here are the relevant assets in this scene that you can use and modify to fit your needs:
-
-* **Level Blueprint**: Creates and add a stylised Passthrough layer to the player pawn
-* **BP_Flashlight.uasset**: A flashlight that attach to the right controller and possess a lighted passthrough layer, use Button A to switch on/off.
-
-You can draw a cone with one or multiple meshes. If you use multiple meshes, keep in mind the number of pixels drawn in every frame. Multiple overlapping, blended meshes will often result in many redrawn pixels. Pay careful attention to performance if you use large translucent meshes to simulate a volumetric look.
-
-## Using Passthrough As Overlay
-You can see an example of using Passthrough as an overlay in the **PTOpacity** level. In this sample, you use the slider widget (or thumstick on your right controller) to adjust the opacity of the Passthrough layer from 0% to 100%.
-
-Here are relevant assets in this scene that you can use and modify to fit your needs:
-
-* **Level Blueprint**: Creates and add Passthrough layer to the player pawn, sends layer to the widget and binds input for right thumbstick
-* **W_PTOpacity.uasset**: Set Texture Opacity based on slider value
-
 ## Using Passthrough Styles For Colorful Effects
 
 The **PTStyles** level demonstrates some of the styling options which are available on Passthrough layers. The styling can be controlled using the widget in the level:
@@ -110,14 +78,6 @@ Here are the relevant assets in this scene that you can use and modify to fit yo
 
 The lighting and color in this sample may cause seizures in people with epilepsy or who are sensitive to light and color.
 
-### Passthrough Layer Placement
-
-The **PTLayer_Placement** level shows how placement of Passthrough layers can affect your scene. To change the order of Passthrough layers, use the right trigger to switch the layer between Overlay and Underlay, or use the left trigger to toggle Depth Support.
-
-Here are the relevant assets in this scene that you can use and modify to fit your needs:
-
-* **Level Blueprint**: Creates and adds Passthrough layer to the player pawn, binds inputs and modify layer placement
-
 ### Passthrough Masking
 
 The **PTMaskedBrush** and **PTMasking** levels demonstrate experiences where a Passthrough layer is masked and only visible in certain screen areas.
@@ -130,13 +90,6 @@ Here are the relevant assets in this scene that you can use and modify to fit yo
 
 * **Level Blueprint**: Creates and adds Passthrough layer to the player pawn, binds inputs and project passthrough to the circle
 * **MaskedCircle**: Actor on which the passthrough is projected, using the *mPokeAHoleMask* material to smooth its border
-
-### Surface-Projected Passthrough
-
-In the **PTSurfaceProjected** level, you can see an example of Passthrough projected onto a mesh surface. Instead of mapping Passthrough to a mesh reconstructed from stereo imagery, this takes an input static mesh and uses the vertex positions to calculate exact stereo mapping. Use this in cases where you have high confidence in real items matching virtual items, such as flat surfaces. For example, the demo scene looks like a TV setup with a view of the real world. Depth accuracy is better with surface-projected Passthrough, especially at longer distances where a reconstructed Passthrough mesh is less reliable.
-
-This feature is also working for procedural meshes as demonstrated in the **PTProceduralMesh** level.
-*Note : The Passthrough will not follow mesh modification after it has been added as a Surface Geometry, if you have modified your procedural mesh and want the Passthrough to follow you'll need to remove and add again your mesh*
 
 ## How to Use
 
